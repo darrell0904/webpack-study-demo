@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// ES Moudule 模块引入方式\n// import webpackSrc from './webpack.png';\n// import createAvatar from './createAvatar';\n// import './index.less';\n// import style from './index.less'\n\n// createAvatar();\n// var img = new Image();\n// img.src = webpackSrc;\n// img.classList.add(style.avatar); // 添加类名\n\n// var dom = document.getElementById('root');\n// dom.append(img);\nvar dom = document.getElementById('root');\ndom.innerHTML = \"<div class='iconfont icon-left'></div>\"\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("consle.log('hello, darrell');\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

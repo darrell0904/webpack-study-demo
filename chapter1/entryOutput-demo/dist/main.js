@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "http://cdn.com.cn";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -133,18 +133,6 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
-/***/ "./src/createAvatar.js":
-/*!*****************************!*\
-  !*** ./src/createAvatar.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _webpack_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./webpack.png */ \"./src/webpack.png\");\n/* harmony import */ var _webpack_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_webpack_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.less */ \"./src/index.less\");\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nfunction createAvatar () {\n  var img = new Image();\n  img.src = _webpack_png__WEBPACK_IMPORTED_MODULE_0___default.a;\n  img.classList.add(_index_less__WEBPACK_IMPORTED_MODULE_1___default.a.avatar); // 添加类名\n\n  var dom = document.getElementById('root');\n  dom.append(img);\n\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (createAvatar);\n\n//# sourceURL=webpack:///./src/createAvatar.js?");
-
-/***/ }),
-
 /***/ "./src/fonts/iconfont.eot?t=1578837972221":
 /*!************************************************!*\
   !*** ./src/fonts/iconfont.eot?t=1578837972221 ***!
@@ -197,7 +185,7 @@ eval("module.exports = __webpack_require__.p + \"a9b3886906d610a22ef03b4d0144455
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _webpack_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./webpack.png */ \"./src/webpack.png\");\n/* harmony import */ var _webpack_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_webpack_png__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _createAvatar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createAvatar */ \"./src/createAvatar.js\");\n// ES Moudule 模块引入方式\n\n\n// import './index.less';\n// import style from './index.less'\n\n// createAvatar();\n// var img = new Image();\n// img.src = webpackSrc;\n// img.classList.add(style.avatar); // 添加类名\n\n// var dom = document.getElementById('root');\n// dom.append(img);\nvar dom = document.getElementById('root');\ndom.innerHTML = \"<div class='iconfont icon-left'></div>\"\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.less */ \"./src/index.less\");\n/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_0__);\n// ES Moudule 模块引入方式\n// import webpackSrc from './webpack.png';\n// import createAvatar from './createAvatar';\n// import './index.less';\n\n\n// createAvatar();\n// var img = new Image();\n// img.src = webpackSrc;\n// img.classList.add(style.avatar); // 添加类名\n\n// var dom = document.getElementById('root');\n// dom.append(img);\nvar dom = document.getElementById('root');\ndom.innerHTML = \"<div class='iconfont icon-left'></div>\"\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -209,17 +197,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _web
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--6-1!../node_modules/less-loader/dist/cjs.js!../node_modules/postcss-loader/src!./index.less */ \"./node_modules/css-loader/dist/cjs.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/postcss-loader/src/index.js!./src/index.less\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.i, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(module.i, content, options);\n\nvar exported = content.locals ? content.locals : {};\n\n\n\nmodule.exports = exported;\n\n//# sourceURL=webpack:///./src/index.less?");
-
-/***/ }),
-
-/***/ "./src/webpack.png":
-/*!*************************!*\
-  !*** ./src/webpack.png ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"images/webpack_36da753c088730f888a891c8cfff7914.png\";\n\n//# sourceURL=webpack:///./src/webpack.png?");
 
 /***/ })
 
