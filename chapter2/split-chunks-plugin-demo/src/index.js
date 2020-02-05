@@ -1,10 +1,6 @@
 // 工具库
-import _ from 'lodash';
-import $ from 'jquery';
+// import _ from 'lodash';
+import f1 from './async';
 
-console.log(_.join(['a', 'b', 'c'], '***'));
-console.log($);
-
-// import(/* webpackChunkName: "common-async.js" */"./async").then(common => {
-//   console.log(common);
-// })
+// console.log(_.join(['a', 'b', 'c'], '***'));
+console.log(1);

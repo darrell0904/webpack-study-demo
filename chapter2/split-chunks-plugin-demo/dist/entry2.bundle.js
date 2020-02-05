@@ -113,7 +113,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "76579de1cd8875523c57";
+/******/ 	var hotCurrentHash = "0871f9be23c60d49d32f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -760,7 +760,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"main": 0
+/******/ 		"entry2": 0
 /******/ 	};
 /******/
 /******/ 	var deferredModules = [];
@@ -857,44 +857,22 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push(["./src/index.js","jquery","lodash"]);
+/******/ 	deferredModules.push(["./src/entry2.js","entry1~entry2","entry2~entry3"]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/webpack/buildin/global.js":
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn this;\n})();\n\ntry {\n\t// This works if eval is allowed (see CSP)\n\tg = g || new Function(\"return this\")();\n} catch (e) {\n\t// This works if the window reference is available\n\tif (typeof window === \"object\") g = window;\n}\n\n// g can still be undefined, but nothing to do about it...\n// We return undefined, instead of nothing here, so it's\n// easier to handle this case. if(!global) { ...}\n\nmodule.exports = g;\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvd2VicGFjay9idWlsZGluL2dsb2JhbC5qcy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8od2VicGFjaykvYnVpbGRpbi9nbG9iYWwuanM/Y2QwMCJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgZztcblxuLy8gVGhpcyB3b3JrcyBpbiBub24tc3RyaWN0IG1vZGVcbmcgPSAoZnVuY3Rpb24oKSB7XG5cdHJldHVybiB0aGlzO1xufSkoKTtcblxudHJ5IHtcblx0Ly8gVGhpcyB3b3JrcyBpZiBldmFsIGlzIGFsbG93ZWQgKHNlZSBDU1ApXG5cdGcgPSBnIHx8IG5ldyBGdW5jdGlvbihcInJldHVybiB0aGlzXCIpKCk7XG59IGNhdGNoIChlKSB7XG5cdC8vIFRoaXMgd29ya3MgaWYgdGhlIHdpbmRvdyByZWZlcmVuY2UgaXMgYXZhaWxhYmxlXG5cdGlmICh0eXBlb2Ygd2luZG93ID09PSBcIm9iamVjdFwiKSBnID0gd2luZG93O1xufVxuXG4vLyBnIGNhbiBzdGlsbCBiZSB1bmRlZmluZWQsIGJ1dCBub3RoaW5nIHRvIGRvIGFib3V0IGl0Li4uXG4vLyBXZSByZXR1cm4gdW5kZWZpbmVkLCBpbnN0ZWFkIG9mIG5vdGhpbmcgaGVyZSwgc28gaXQnc1xuLy8gZWFzaWVyIHRvIGhhbmRsZSB0aGlzIGNhc2UuIGlmKCFnbG9iYWwpIHsgLi4ufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGc7XG4iXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./node_modules/webpack/buildin/global.js\n");
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/module.js":
-/*!***********************************!*\
-  !*** (webpack)/buildin/module.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\tmodule.deprecate = function() {};\n\t\tmodule.paths = [];\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvd2VicGFjay9idWlsZGluL21vZHVsZS5qcy5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy8od2VicGFjaykvYnVpbGRpbi9tb2R1bGUuanM/Y2VkMiJdLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuXHRpZiAoIW1vZHVsZS53ZWJwYWNrUG9seWZpbGwpIHtcblx0XHRtb2R1bGUuZGVwcmVjYXRlID0gZnVuY3Rpb24oKSB7fTtcblx0XHRtb2R1bGUucGF0aHMgPSBbXTtcblx0XHQvLyBtb2R1bGUucGFyZW50ID0gdW5kZWZpbmVkIGJ5IGRlZmF1bHRcblx0XHRpZiAoIW1vZHVsZS5jaGlsZHJlbikgbW9kdWxlLmNoaWxkcmVuID0gW107XG5cdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KG1vZHVsZSwgXCJsb2FkZWRcIiwge1xuXHRcdFx0ZW51bWVyYWJsZTogdHJ1ZSxcblx0XHRcdGdldDogZnVuY3Rpb24oKSB7XG5cdFx0XHRcdHJldHVybiBtb2R1bGUubDtcblx0XHRcdH1cblx0XHR9KTtcblx0XHRPYmplY3QuZGVmaW5lUHJvcGVydHkobW9kdWxlLCBcImlkXCIsIHtcblx0XHRcdGVudW1lcmFibGU6IHRydWUsXG5cdFx0XHRnZXQ6IGZ1bmN0aW9uKCkge1xuXHRcdFx0XHRyZXR1cm4gbW9kdWxlLmk7XG5cdFx0XHR9XG5cdFx0fSk7XG5cdFx0bW9kdWxlLndlYnBhY2tQb2x5ZmlsbCA9IDE7XG5cdH1cblx0cmV0dXJuIG1vZHVsZTtcbn07XG4iXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./node_modules/webpack/buildin/module.js\n");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/entry2.js":
+/*!***********************!*\
+  !*** ./src/entry2.js ***!
+  \***********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);\n// 工具库\n\n\nconsole.log(lodash__WEBPACK_IMPORTED_MODULE_0___default.a.join(['a', 'b', 'c'], '***'));\nconsole.log(jquery__WEBPACK_IMPORTED_MODULE_1___default.a); // import(/* webpackChunkName: \"common-async.js\" */\"./async\").then(common => {\n//   console.log(common);\n// })//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyDlt6XlhbflupNcbmltcG9ydCBfIGZyb20gJ2xvZGFzaCc7XG5pbXBvcnQgJCBmcm9tICdqcXVlcnknO1xuXG5jb25zb2xlLmxvZyhfLmpvaW4oWydhJywgJ2InLCAnYyddLCAnKioqJykpO1xuY29uc29sZS5sb2coJCk7XG5cbi8vIGltcG9ydCgvKiB3ZWJwYWNrQ2h1bmtOYW1lOiBcImNvbW1vbi1hc3luYy5qc1wiICovXCIuL2FzeW5jXCIpLnRoZW4oY29tbW9uID0+IHtcbi8vICAgY29uc29sZS5sb2coY29tbW9uKTtcbi8vIH0pIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFDQTtBQUNBO0FBRUE7QUFDQTtBQUdBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_module_a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/module-a */ \"./src/modules/module-a.js\");\n/* harmony import */ var _modules_module_b__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/module-b */ \"./src/modules/module-b.js\");\n// ----1----\n// import classA from './classes/class-a';\n// import classB from './classes/class-b';\n// import classC from './classes/class-c';\n// let math = {\n//     teacher: 'math', age: 47\n// };\n// classA.push(math);\n// classB.push(math);\n// classC.push(math);\n// ----async----\n// entry2.js\n// import classB from './modules/module-b';\n// import classC from './modules/module-c';\n// let math = {\n//     teacher: 'math', age: 47\n// };\n// import(/* webpackChunkName: \"async-module-a\" */  './modules/module-a').then(classA =>{\n//     classA.push(engligh);\n// });\n// classB.push(math);\n// classC.push(math);\n// maxInitialRequests\n// entry2.js\n\n\nvar math = {\n  teacher: 'math',\n  age: 47\n};\n_modules_module_a__WEBPACK_IMPORTED_MODULE_0__[\"default\"].push(math);\n_modules_module_b__WEBPACK_IMPORTED_MODULE_1__[\"default\"].push(math);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvZW50cnkyLmpzLmpzIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vc3JjL2VudHJ5Mi5qcz84MWNiIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIC0tLS0xLS0tLVxuLy8gaW1wb3J0IGNsYXNzQSBmcm9tICcuL2NsYXNzZXMvY2xhc3MtYSc7XG4vLyBpbXBvcnQgY2xhc3NCIGZyb20gJy4vY2xhc3Nlcy9jbGFzcy1iJztcbi8vIGltcG9ydCBjbGFzc0MgZnJvbSAnLi9jbGFzc2VzL2NsYXNzLWMnO1xuXG5cbi8vIGxldCBtYXRoID0ge1xuLy8gICAgIHRlYWNoZXI6ICdtYXRoJywgYWdlOiA0N1xuLy8gfTtcblxuLy8gY2xhc3NBLnB1c2gobWF0aCk7XG4vLyBjbGFzc0IucHVzaChtYXRoKTtcbi8vIGNsYXNzQy5wdXNoKG1hdGgpO1xuXG4vLyAtLS0tYXN5bmMtLS0tXG4vLyBlbnRyeTIuanNcbi8vIGltcG9ydCBjbGFzc0IgZnJvbSAnLi9tb2R1bGVzL21vZHVsZS1iJztcbi8vIGltcG9ydCBjbGFzc0MgZnJvbSAnLi9tb2R1bGVzL21vZHVsZS1jJztcblxuLy8gbGV0IG1hdGggPSB7XG4vLyAgICAgdGVhY2hlcjogJ21hdGgnLCBhZ2U6IDQ3XG4vLyB9O1xuXG4vLyBpbXBvcnQoLyogd2VicGFja0NodW5rTmFtZTogXCJhc3luYy1tb2R1bGUtYVwiICovICAnLi9tb2R1bGVzL21vZHVsZS1hJykudGhlbihjbGFzc0EgPT57XG4vLyAgICAgY2xhc3NBLnB1c2goZW5nbGlnaCk7XG4vLyB9KTtcblxuLy8gY2xhc3NCLnB1c2gobWF0aCk7XG4vLyBjbGFzc0MucHVzaChtYXRoKTtcblxuLy8gbWF4SW5pdGlhbFJlcXVlc3RzXG4vLyBlbnRyeTIuanNcbmltcG9ydCBjbGFzc0EgZnJvbSAnLi9tb2R1bGVzL21vZHVsZS1hJztcbmltcG9ydCBjbGFzc0IgZnJvbSAnLi9tb2R1bGVzL21vZHVsZS1iJztcblxubGV0IG1hdGggPSB7XG4gICAgdGVhY2hlcjogJ21hdGgnLCBhZ2U6IDQ3XG59O1xuY2xhc3NBLnB1c2gobWF0aCk7XG5jbGFzc0IucHVzaChtYXRoKTtcblxuXG4iXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBR0E7QUFDQTtBQUNBO0FBRUE7QUFDQTtBQUNBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQUE7QUFEQTtBQUdBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/entry2.js\n");
 
 /***/ })
 

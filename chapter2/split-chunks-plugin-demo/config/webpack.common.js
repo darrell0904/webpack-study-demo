@@ -1,10 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	entry: {
-		main: './src/index.js',
+		entry1: "./src/entry1.js",
+		entry2: "./src/entry2.js",
+		entry3: "./src/entry3.js",
 	},
 	module: {
 		rules: [{ 
@@ -45,41 +48,27 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
 		}),
+		new BundleAnalyzerPlugin({
+			analyzerHost: '127.0.0.1',
+			analyzerPort: 8889,
+			openAnalyzer: false,
+		}),
 	],
 	optimization: {
+		minimize: false,
 		splitChunks: {
-			chunks: "all",
-			minSize: 30000,
-			// minChunks: 1,
-			// maxAsyncRequests: 5,
-			// maxInitialRequests: 1,
-			// automaticNameDelimiter: '~',
-			// name: true,
-			// cacheGroups: {
-			// 	vendors: false,
-			// 	default: false,
-			// },
-			cacheGroups: {
-				'jquery': {
-          test: /jquery/, // 直接使用 test 来做路径匹配
-          chunks: "initial",
-          name: "jquery",
-          enforce: true,
-				},
-				'lodash': {
-          test: /lodash/, // 直接使用 test 来做路径匹配
-          chunks: "initial",
-          name: "lodash",
-          enforce: true,
-        },
-			}
+			chunks: 'all',
+			// chunks: 'async',
+			maxInitialRequests: 3,
+			minSize: 0,
+			automaticNameDelimiter: '~',
 		},
 		// runtimeChunk: {
 		// 	name: 'runtime'
 		// }
 	},
 	output: {
-		filename: '[name].js',
+		filename: "[name].bundle.js",
 		path: path.resolve(__dirname, '../dist')
 	}
 }
