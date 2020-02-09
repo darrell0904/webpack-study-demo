@@ -1,4 +1,4 @@
-// class-a.js
+// module-a.js
 export default [
   {student: "大红", age: 18},
   {student: "大米", age: 19},
