@@ -6,12 +6,13 @@ const crypto = require('crypto');
 const chalk = require('react-dev-utils/chalk');
 const paths = require('./paths');
 
-// Ensure the certificate and key provided are valid and if not
-// throw an easy to debug error
+// 确保提供的证书和密钥有效，
+// 无效则抛出易于调试的错误
 function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
   let encrypted;
   try {
     // publicEncrypt will throw an error with an invalid cert
+    // publicEncrypt将使用无效的证书引发错误
     encrypted = crypto.publicEncrypt(cert, Buffer.from('test'));
   } catch (err) {
     throw new Error(
@@ -21,6 +22,7 @@ function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
 
   try {
     // privateDecrypt will throw an error with an invalid key
+    // privateDecrypt 将使用无效密钥抛出错误
     crypto.privateDecrypt(key, encrypted);
   } catch (err) {
     throw new Error(
@@ -31,7 +33,7 @@ function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
   }
 }
 
-// Read file and throw an error if it doesn't exist
+// 读取文件并抛出错误（如果不存在）
 function readEnvFile(file, type) {
   if (!fs.existsSync(file)) {
     throw new Error(
@@ -43,8 +45,8 @@ function readEnvFile(file, type) {
   return fs.readFileSync(file);
 }
 
-// Get the https config
-// Return cert files if provided in env, otherwise just true or false
+// 获取https配置
+// 如果环境中提供了则返回证书文件，否则返回 true 或 false
 function getHttpsConfig() {
   const { SSL_CRT_FILE, SSL_KEY_FILE, HTTPS } = process.env;
   const isHttps = HTTPS === 'true';
