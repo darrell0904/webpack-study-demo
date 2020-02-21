@@ -48,15 +48,6 @@ dotenvFiles.forEach(dotenvFile => {
   }
 });
 
-// We support resolving modules according to `NODE_PATH`.
-// This lets you use absolute paths in imports inside large monorepos:
-// https://github.com/facebook/create-react-app/issues/253.
-// It works similar to `NODE_PATH` in Node itself:
-// https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders
-// Note that unlike in Node, only *relative* paths from `NODE_PATH` are honored.
-// Otherwise, we risk importing Node.js core modules into an app instead of webpack shims.
-// https://github.com/facebook/create-react-app/issues/1023#issuecomment-265344421
-// We also resolve them to make sure all tools using them work consistently.
 
 // 获取当前项目的路径，经过一些列的处理之后，定义到 NODE_PATH 中去
 // 与 Node 本身的 NODE_PATH 类似
@@ -70,9 +61,6 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .join(path.delimiter);
 
 
-
-// Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
-// injected into the application via DefinePlugin in webpack configuration.
 
 // 获取 NODE_ENV 和 REACT_APP_ * 环境变量
 // 并通过 webpack 配置中的 DefinePlugin 注入到应用程序中。
@@ -91,32 +79,16 @@ function getClientEnvironment(publicUrl) {
         return env;
       },
       {
-        // Useful for determining whether we’re running in production mode.
-        // Most importantly, it switches React into the correct mode.
-
         // 设置项目的打包环境
         NODE_ENV: process.env.NODE_ENV || 'development',
-        // Useful for resolving the correct path to static assets in `public`.
-        // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
-        // This should only be used as an escape hatch. Normally you would put
-        // images into the `src` and `import` them in code to get their paths.
-
         // 设置静态资源路径。比如可以这样写：<img src = {process.env.PUBLIC_URL +'/img/logo.png'} />
         PUBLIC_URL: publicUrl,
-        // We support configuring the sockjs pathname during development.
-        // These settings let a developer run multiple simultaneous projects.
-        // They are used as the connection `hostname`, `pathname` and `port`
-        // in webpackHotDevClient. They are used as the `sockHost`, `sockPath`
-        // and `sockPort` options in webpack-dev-server.
-
         // 设置 socket 相关配置，比如设置连接“主机名”，“路径名”和“端口”。
         WDS_SOCKET_HOST: process.env.WDS_SOCKET_HOST,
         WDS_SOCKET_PATH: process.env.WDS_SOCKET_PATH,
         WDS_SOCKET_PORT: process.env.WDS_SOCKET_PORT,
       }
     );
-  // Stringify all values so we can feed into webpack DefinePlugin
-
   // 将全局变量 字符串化，以便我们可以将其输入到 webpack 中 DefinePlugin。
   const stringified = {
     'process.env': Object.keys(raw).reduce((env, key) => {

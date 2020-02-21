@@ -36,7 +36,6 @@ const dotenvFiles = [
 // https://github.com/motdotla/dotenv
 // https://github.com/motdotla/dotenv-expand
 dotenvFiles.forEach(dotenvFile => {
-  console.log('---dotenvFile--', dotenvFile);
   if (fs.existsSync(dotenvFile)) {
     require('dotenv-expand')(
       require('dotenv').config({
@@ -100,9 +99,6 @@ function getClientEnvironment(publicUrl) {
       return env;
     }, {}),
   };
-
-  console.log('---raw---', raw);
-
   return { raw, stringified };
 }
 
