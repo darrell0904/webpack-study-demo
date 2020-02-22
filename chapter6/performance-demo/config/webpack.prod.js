@@ -26,16 +26,35 @@ const prodConfig = {
 				'less-loader',
 				'postcss-loader',
 			]
+		}, {
+			test: /\.css$/,
+			include: path.resolve(__dirname, '../src'), 
+			use: [
+				{
+					loader: MiniCssExtractPlugin.loader,
+					options: {
+						hmr: true,
+					},
+				},
+				{
+					loader: 'css-loader',
+					options: {
+						modules: true,
+					}
+				},
+			]
 		}]
   },
   plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css', // 直接引用
 			chunkFilename: '[name].chunk.css' // 间接引用
-    }),
+		}),
   ],
   optimization: {
-		minimizer: [new OptimizeCSSAssetsPlugin({})]
+		minimizer: [
+			new OptimizeCSSAssetsPlugin({})
+		]
 	},
 	output: {
 		filename: "[name].[contenthash].js",

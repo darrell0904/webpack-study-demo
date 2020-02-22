@@ -29,14 +29,29 @@ const devConfig = {
 				'less-loader',
 				'postcss-loader',
 			]
+		}, {
+			test: /\.css$/,
+			include: path.resolve(__dirname, '../src'), 
+			use: [
+				{
+					loader: MiniCssExtractPlugin.loader,
+					options: {
+						hmr: true,
+					},
+				},
+				{
+					loader: 'css-loader',
+					options: {
+						modules: true,
+					}
+				},
+			]
 		}]
 	},
 	devServer: {
-		overlay: true,
-		contentBase: './dist',
-		port: 8080,
+		// contentBase: './dist',
 		hot: true,
-		historyApiFallback: true
+		stats: 'errors-only'
 	},
   plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -49,8 +64,6 @@ const devConfig = {
 		filename: "[name].bundle.js",
 		chunkFilename: '[name].chunk.js', // 简介引入代码输出的名字
 		path: path.resolve(__dirname, '../dist')
-	},
-	optimization: {
 	},
 }
 
