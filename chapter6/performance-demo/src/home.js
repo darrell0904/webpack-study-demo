@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import ReactDom from 'react-dom';
 import jquery from 'jquery';
 import _ from 'lodash';
-import bg from './assets/trees.png'
+import bg from './assets/build.png'
 import React, { Component } from 'react';
 
 class Home extends Component {

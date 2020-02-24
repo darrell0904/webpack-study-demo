@@ -1,0 +1,20 @@
+{
+  "name": "fis3-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "fis3 release -d ../output"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fis-parser-babel-5.x": "^1.4.0",
+    "fis-parser-babel-6.x": "^6.24.1",
+    "fis-parser-less-2.x": "^0.1.4",
+    "fis3": "^3.4.43",
+    "fis3-hook-commonjs": "^0.1.31",
+    "fis3-hook-node_modules": "^2.3.1",
+    "fis3-postpackager-loader": "^2.1.11"
+  }
+}

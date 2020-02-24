@@ -35,9 +35,9 @@ const makePlugins = (configs) => {
 		// 	loaders: [ 'babel-loader' ]
 		// }),
 		new HardSourceWebpackPlugin(),
-		// new PurgecssPlugin({
-		// 	paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
-		// }),
+		new PurgecssPlugin({
+			paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+		}),
 	];
 	Object.keys(configs.entry).forEach(item => {
 		plugins.push(
@@ -122,7 +122,7 @@ const commonConfig = {
 							enabled: false,
 						},
 						pngquant: {
-							quality: '65-90',
+							quality: [0.65, 0.9],
 							speed: 4
 						},
 						gifsicle: {
@@ -145,10 +145,9 @@ const commonConfig = {
 	optimization: {
 		minimize: true,
 		minimizer: [
-			new TerserPlugin({
-				parallel: false,
-				cache: true,
-			})
+			// new TerserPlugin({
+			// 	parallel: false,
+			// })
 		],
 		usedExports: true,
 		runtimeChunk: {
