@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","sources":["webpack:///./src/index.less"],"sourcesContent":[".Home {\n  color: red;\n  vertical-align: middle;\n}\n.Home img {\n  width: 300px;\n  margin-left: 60px;\n  vertical-align: middle;\n}\n"],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;","sourceRoot":""}
