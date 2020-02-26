@@ -1,16 +1,15 @@
-const React = require('react');
-const bg = require('./assets/lufei.jpg');
-const s = require('./index.less');
+import React, { Component } from 'react';
+import { renderToString } from 'react-dom/server';
+import Home from './home';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="Home">
-        HomePage
-        <img src={bg} alt="bg" />
+      <div>
+        <Home />
       </div>
     );
   }
 }
 
-module.exports = <App />;
+export default renderToString(<App />);

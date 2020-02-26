@@ -4,12 +4,14 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log(__dirname);
+
 const prodConfig = {
-  mode: 'none',
+  mode: 'production',
   entry: {
-		main: "./src/index-server.js",
+		main: path.resolve(__dirname, '../src/index-server.js'),
 	},
-  devtool: 'cheap-module-source-map', // production
+	target: 'node',
   module: {
 		rules: [{
 			test: /\.less$/,
@@ -34,7 +36,13 @@ const prodConfig = {
 			test: /\.js|jsx$/, 
 			exclude: /node_modules/, 
 			use: [
-				'babel-loader'
+				{
+					loader: 'babel-loader',
+					options: {
+						"presets": [
+						],
+					}
+				}
 			]
 		}, {
 			test: /\.(png|jpg|gif)$/,
@@ -68,8 +76,10 @@ const prodConfig = {
 	output: {
     path: path.resolve(__dirname, '../dist'),
 		filename: "[name]-server.js",
-    libraryTarget: 'umd'
-  },
+		libraryTarget: 'umd',
+		libraryExport: 'default'
+	},
+	performance: false,
 }
 
 module.exports = prodConfig;

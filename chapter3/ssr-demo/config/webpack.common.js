@@ -15,13 +15,18 @@ const commonConfig = {
 			test: /\.js|jsx$/, 
 			exclude: /node_modules/, 
 			use: [
-				'babel-loader',
 				{
-					loader: 'eslint-loader',
+					loader: 'babel-loader',
 					options: {
-						
+						plugins: ["@babel/plugin-transform-runtime"]
 					}
 				}
+				// {
+				// 	loader: 'eslint-loader',
+				// 	options: {
+						
+				// 	}
+				// }
 			]
 		}, {
 			test: /\.(png|jpg|gif)$/,

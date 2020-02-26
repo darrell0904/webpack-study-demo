@@ -37,9 +37,9 @@ const prodConfig = {
 		minimizer: [new OptimizeCSSAssetsPlugin({})]
 	},
 	output: {
-		filename: "[name].[contenthash].js",
-		chunkFilename: '[name].[contenthash].js', // 简介引入代码输出的名字
-		path: path.resolve(__dirname, '../dist')
+		filename: "[name].js",
+		chunkFilename: '[name].js', // 简介引入代码输出的名字
+		path: path.resolve(__dirname, '../dist-client')
 	}
 }
 

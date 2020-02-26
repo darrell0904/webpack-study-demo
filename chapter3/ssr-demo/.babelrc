@@ -1,9 +1,13 @@
 {
-	"presets": [
+  "presets": [
     [
-      "@babel/preset-env"
+      "@babel/preset-env", {
+        "targets": {
+          "esmodules": false
+        }
+      }
     ],
     "@babel/preset-react"
   ],
-  "plugins": []
+  "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-runtime"]
 }
