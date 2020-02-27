@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -21,7 +23,13 @@ module.exports = {
 		}, {
 			test: /\.less$/,
 			use: [
-				'style-loader',
+				{
+					loader: 'style-loader',
+					options: {
+						insertAt: 'top', // 样式插入到 <head>
+						singleton: true, //将所有的style标签合并成一个
+					}
+				},
 				{
 					loader: 'css-loader',
 					options: {
@@ -29,11 +37,24 @@ module.exports = {
 						// modules: true,
 					}
 				},
+				{
+					loader: 'px2rem-loader',
+					options: {
+						remUnit: 75,
+						remPrecision: 8
+					}
+				},
 				'less-loader',
 				'postcss-loader',
 			]
 		}]
 	},
+	plugins: [
+		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			template: 'src/index.html',
+		}),
+	],
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'bundle')

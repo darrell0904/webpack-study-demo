@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模块化问题例子</title>
+  ${require('raw-loader!./meta.html')}
+  <script>${require('raw-loader!babel-loader!../node_modules/amfe-flexible')}</script>
+</head>
+<body>
+  <div id='root'></div>
+</body>
+</html>

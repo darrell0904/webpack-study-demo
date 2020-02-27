@@ -1,7 +1,7 @@
 // ES Moudule 模块引入方式
 // import webpackSrc from './webpack.png';
 // import createAvatar from './createAvatar';
-// import './index.less';
+import './index.less';
 // import style from './index.less'
 
 // createAvatar();
@@ -12,5 +12,5 @@
 // var dom = document.getElementById('root');
 // dom.append(img);
 var dom = document.getElementById('root');
-dom.innerHTML = "<div class='iconfont icon-left'></div>"
+dom.innerHTML = "<div class='iconfont icon-left'>1111111</div>"
 
