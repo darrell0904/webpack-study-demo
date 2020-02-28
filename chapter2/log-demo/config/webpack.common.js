@@ -8,7 +8,11 @@ module.exports = {
 		main: "./src/index.js",
 	},
 	module: {
-		rules: [{
+		rules: [{ 
+			test: /\.js$/, 
+			exclude: /node_modules/, 
+			loader: 'babel-loader',
+		}, {
 			test: /\.(png|jpg|gif)$/,
 			use: {
 				loader: 'file-loader',
@@ -39,8 +43,8 @@ module.exports = {
 			this.hooks.done.tap('done', (stats) => {
 					if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1)
 					{
-							console.log('build error，no babel loader');
-							// process.exit(1);
+							console.log('build error');
+							process.exit(1);
 					}
 			})
 	} 
