@@ -1,26 +1,64 @@
-const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
+const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const HappyPack = require('happypack');
+
+const projectRoot = process.cwd();
 
 const glob = require('glob');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 const PATHS = {
-  src: path.join(__dirname, './src'),
+  src: path.join(projectRoot, './src'),
 };
 
-// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const setMPA = () => {
+  const entry = {};
+  const htmlWebpackPlugins = [];
+  const entryFiles = glob.sync(path.join(projectRoot, './src/*/index.js'));
 
-// const smp = new SpeedMeasurePlugin({
-// });
+  Object.keys(entryFiles)
+    .map((index) => {
+      const entryFile = entryFiles[index];
+
+      const match = entryFile.match(/src\/(.*)\/index\.js/);
+      const pageName = match && match[1];
+
+      entry[pageName] = entryFile;
+
+      return htmlWebpackPlugins.push(
+        new HtmlWebpackPlugin({
+          inlineSource: '.css$',
+          template: path.join(projectRoot, `./src/${pageName}/index.html`),
+          filename: `${pageName}.html`,
+          chunks: ['vendors', pageName],
+          inject: true,
+          minify: {
+            html5: true,
+            collapseWhitespace: true,
+            preserveLineBreaks: false,
+            minifyCSS: true,
+            minifyJS: true,
+            removeComments: false,
+          },
+        })
+      );
+    });
+
+  return {
+    entry,
+    htmlWebpackPlugins,
+  };
+};
+
+const { entry, htmlWebpackPlugins } = setMPA();
 
 const makePlugins = (configs) => {
   const plugins = [
@@ -42,44 +80,21 @@ const makePlugins = (configs) => {
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
   ];
-  Object.keys(configs.entry).forEach((item) => {
-    plugins.push(
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        filename: `${item}.html`,
-        chunks: ['runtime', 'vendors', item],
-      }),
-    );
-  });
-  const files = fs.readdirSync(path.resolve(__dirname, '../dll'));
-  files.forEach((file) => {
-    if (/.*\.dll.js/.test(file)) {
-      plugins.push(new AddAssetHtmlWebpackPlugin({
-        filepath: path.resolve(__dirname, '../dll', file),
-      }));
-    }
-    if (/.*\.manifest.json/.test(file)) {
-      plugins.push(new webpack.DllReferencePlugin({
-        manifest: path.resolve(__dirname, '../dll', file),
-      }));
-    }
-  });
-  return plugins;
+
+  return plugins.concat(htmlWebpackPlugins);;
 };
 
 const commonConfig = {
-  entry: {
-    main: './src/index.js',
-  },
+  entry,
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js', // 简介引入代码输出的名字
-    path: path.resolve(__dirname, '../dist'),
+    filename: '[name]_[chunkhash:8].js',
+    chunkFilename: '[name]_chunk.js', // 简介引入代码输出的名字
+    path: path.resolve(projectRoot, './dist'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      alias: path.resolve(__dirname, '../src/alias'),
+      alias: path.resolve(projectRoot, './src/alias'),
     },
   },
   module: {
@@ -101,12 +116,11 @@ const commonConfig = {
       ],
     }, {
       test: /\.less$/,
-      include: path.resolve(__dirname, '../src'),
+      include: path.resolve(projectRoot, './src'),
       use: [
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
-            publicPath: '/public/path/to/',
             // 只在开发模式中启用热更新
             hmr: true,
             // 如果模块热更新不起作用，重新加载全部样式
@@ -120,20 +134,11 @@ const commonConfig = {
           },
         },
         'less-loader',
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: () => [
-              autoprefixer({
-                browsers: ['last 2 version', '>1%', 'ios 7'],
-              }),
-            ],
-          },
-        },
+        'postcss-loader'
       ],
     }, {
       test: /\.css$/,
-      include: path.resolve(__dirname, '../src'),
+      include: path.resolve(projectRoot, './src'),
       use: [
         {
           loader: MiniCssExtractPlugin.loader,
