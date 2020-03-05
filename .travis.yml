@@ -1,7 +1,5 @@
 language: node_js
 
-sudo: false
-
 cache:
   apt: true
   directories:
@@ -17,4 +15,4 @@ install:
   - cd ../../../
 
 script:
-  - npm run test:unit
+  - npm run test

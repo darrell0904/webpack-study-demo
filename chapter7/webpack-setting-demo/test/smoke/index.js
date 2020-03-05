@@ -27,7 +27,13 @@ rimraf('./dist', () => {
 
         mocha.addFile(path.join(__dirname, 'html-test.js'));
         mocha.addFile(path.join(__dirname, 'css-js-test.js'));
-        mocha.run();
-        // process.exit(0);
+        mocha.run((err) => {
+            if (err === 0) {
+                process.exit(0);
+            } else {
+                process.exit(2);
+            }
+        });
+        // 
     });
 });
