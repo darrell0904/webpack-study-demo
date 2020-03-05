@@ -15,6 +15,7 @@
     "build": "webpack --env production --config ./config/webpack.common.js",
     "build:dll": "webpack --config ./config/webpack.dll.js",
     "analyz": "NODE_ENV=production npm_config_report=true npm run build",
+    "test": "npm run test:unit && npm run test:smoke",
     "test:smoke": "node ./test/smoke/index.js",
     "test:unit": "istanbul cover mocha"
   },

@@ -17,4 +17,4 @@ install:
   - cd ../../../
 
 scripts:
-  - npm run test:smoke
+  - npm run test
