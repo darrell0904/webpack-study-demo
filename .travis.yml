@@ -1,0 +1,19 @@
+language: node_js
+
+sudo: false
+
+cache:
+  apt: true
+  directories:
+    - node_modules
+
+node_js: stable
+
+install:
+  - cd ./chapter7/webpack-setting-demo
+  - npm install -D
+  - cd ./test/smoke/template
+  - npm install -D
+
+scripts:
+  - npm run test:smoke
