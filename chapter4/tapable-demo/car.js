@@ -41,7 +41,7 @@ console.time('cost');
 
 //执行异步钩子
 myCar.hooks.calculateRoutes.promise('Async', 'hook', 'demo', () => {
-  console.log('执行完了');
+  console.log('参数函数执行');
 }).then(() => {
   console.timeEnd('cost');
 }, err => {
