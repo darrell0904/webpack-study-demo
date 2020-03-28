@@ -42,6 +42,7 @@ const commonConfig = {
 			}
 		}]
 	},
+	// watch: true,
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({

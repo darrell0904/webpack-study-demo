@@ -31,14 +31,14 @@ const devConfig = {
 			]
 		}]
 	},
-	devServer: {
-		overlay: true,
-		contentBase: './dist',
-		port: 8080,
-		hot: true
-	},
+	// devServer: {
+	// 	overlay: true,
+	// 	contentBase: './dist',
+	// 	port: 8080,
+	// 	hot: true
+	// },
   plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+		// new webpack.HotModuleReplacementPlugin(),
 		new MiniCssExtractPlugin({
 			filename: '[name].css', // 直接引用
 			chunkFilename: '[name].chunk.css' // 间接引用
