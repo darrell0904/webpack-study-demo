@@ -4,6 +4,7 @@ const devConfig = require('./webpack.dev.js');
 const prodConfig = require('./webpack.prod.js');
 const merge = require('webpack-merge');
 const CopyRightWebpackPlugin = require('../plugins/copyright-webpack-plugin');
+const ZipPlugin = require('../plugins/zip-plugins');
 
 const commonConfig = {
 	entry: {
@@ -38,7 +39,10 @@ const commonConfig = {
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
 		}),
-		new CopyRightWebpackPlugin()
+		new CopyRightWebpackPlugin(),
+		new ZipPlugin({
+			filename: 'offline'
+		}),
 	],
 	optimization: {
 		usedExports: true,

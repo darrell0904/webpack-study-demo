@@ -25,6 +25,12 @@ const commonConfig = {
 						name: 'world',
 					}
 				},
+				{
+					loader: 'emFile-loader',
+					options: {
+						name: 'world',
+					}
+				},
 			]
 		}, {
 			test: /\.(png|jpg|gif)$/,

@@ -1,0 +1,1 @@
+export default '我试试bbb';
